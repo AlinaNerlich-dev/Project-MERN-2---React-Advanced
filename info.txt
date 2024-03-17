@@ -1,0 +1,18 @@
+1. Routes:
+- geolocation
+- 5 predefiened cities (city name, latitude, longitude, and create a select that presents all options for at least five cities.)
+- geolocation: weather forcast for 5 days
+- cities: weather forcast for 5 days
+
+GEOLOCATION: when loaded get users geolocation by latitude and longitude (Object in useState)
+
+Get Geo loaction:
+https://www.w3schools.com/html/html5_geolocation.asp
+
+. when both are there (async/await) setState (in an useEffect, [state]) Api Call to the Weather API
+
+API call
+https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+
+Examples of API calls
+https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={API key}
