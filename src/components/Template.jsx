@@ -1,25 +1,36 @@
 /* eslint-disable react/prop-types */
-const Template = ({ city } ) => {
+import { kelvinToCelcius } from "./functions";
 
-  const kelvin = city.main.temp;
-  
-  const celcius = kelvin - 273.15;
-  console.log(celcius) 
-  const rounded_celcius = celcius.toFixed(2)
+const Template = ({ city } ) => {
+const temp = kelvinToCelcius(city.main.temp)
 
   return (
     <>
-      <div>
+      <div id="selection">
         <p>Choose a city:</p>
-        <select name="cities" id="cities">
-          
+        <select 
+          name="cities" 
+          id="cities"
+          // onChange={(e) => setSelectedAPI(e.target.value)}
+          >
+          <option value="Düsseldorf">Düsseldorf</option>
+          <option value="Münster">Münster</option>
+          <option value="Chandigarh">Chandigarh</option>
+          <option value="Dehli">Dehli</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Vancouver">Vancouver</option>
+          <option value="Funchal">Funchal</option>
         </select>
       </div>
-      <div>
+      <div id="welcome">
           <p>Welcome to</p>
           <h1>{city.name}</h1>
           <h2>{city.weather.main}</h2>
-          <p>The current temperature is: </p><span>{rounded_celcius}</span>
+          <p>The current temperature is: </p><span>{temp} Celcius</span>
+      </div>
+      <div id ="forecast">
+        <p>5 days forecast</p>
+        <input type="checkbox" />
       </div>
     </>
   )

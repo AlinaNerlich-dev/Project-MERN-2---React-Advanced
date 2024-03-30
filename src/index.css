@@ -12,3 +12,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+#selection{
+  text-align: right;
+  margin-bottom: 2rem;
+}
+#forecast {
+  display: flex;
+  justify-content: center;
+  }
+#welcome, #forecast{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#forecast > p{
+  padding-right:3px;
+}
