@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 #selection{
+  margin-right: 3rem;
   text-align: right;
   margin-bottom: 2rem;
 }
@@ -27,4 +28,8 @@
 
 #forecast > p{
   padding-right:3px;
+}
+#temp{
+  font-size: 2rem;
+  font-weight: 600;
 }

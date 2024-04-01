@@ -1,11 +1,15 @@
 /* eslint-disable react/prop-types */
 import { kelvinToCelcius } from "./functions";
+import { dayOrNight } from "./functions";
 
 const Template = ({ city } ) => {
-const temp = kelvinToCelcius(city.main.temp)
-const icon = `https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`
-console.log(city.weather[0].icon)
-
+  const icon = city.weather[0].icon;
+  const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+  const dayOrNightChar = icon.slice(-1);
+  const temp = kelvinToCelcius(city.main.temp);
+  const fontColor = dayOrNight(dayOrNightChar);
+  
+  
   return (
     <>
       <div id="selection">
@@ -26,10 +30,10 @@ console.log(city.weather[0].icon)
       </div>
       <div id="welcome">
           <p>Welcome to</p>
-          <h1>{city.name}</h1>
+          <h1 style={{color:`${fontColor}`}}>{city.name}</h1>
           <h2>{city.weather[0].main}</h2>
-          <img src={icon} alt="" />
-          <p>The current temperature is: </p><span>{temp} Celcius</span>
+          <img src={iconUrl} alt="" />
+          <p>The current temperature is: </p><span style={{color:`${fontColor}`}} id="temp">{temp} Celcius</span>
       </div>
       <div id ="forecast">
         <p>5 days forecast</p>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const kelvinToCelcius = (temp) => {
     const kelvin = temp;
   
@@ -9,3 +10,15 @@ const kelvinToCelcius = (temp) => {
 }
 
 export {kelvinToCelcius};
+
+
+const dayOrNight = (character) => {
+    let fontColor; 
+    if (character == "d"){
+        return fontColor = "yellow"
+      } else {
+        return fontColor = "blue"
+      }
+}
+
+export {dayOrNight}
