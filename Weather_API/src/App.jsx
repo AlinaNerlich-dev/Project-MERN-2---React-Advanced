@@ -4,7 +4,7 @@ import {
 } from "react-router-dom"
 import Home from "./pages/Home.jsx"
 import GeoForecast from "./pages/GeoForecast.jsx"
-import Cities from "./pages/Cities.jsx"
+import GeoCity from "./pages/GeoCity.jsx"
 import CitiesForecast from "./pages/CitiesForecast.jsx"
 
 
@@ -20,7 +20,7 @@ function App() {
     },
     {
       path: "/cities",
-      element: <Cities />,
+      element: <GeoCity />,
     },
     {
       path: "/citiesforecast",

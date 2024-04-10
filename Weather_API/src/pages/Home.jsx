@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Template from "../components/Template";
 import mockup from "../components/mockup";
+import cityContext from "../context/cityContext";
 
 const home = document.getElementById("home");
 
@@ -42,9 +43,13 @@ const Home = () => {
 
   return (
     <div id="home">
-      <Template key={mockup.weather.id} city={mockup}/>
+      <cityContext.Provider value={mockup}>
+        <Template key={mockup.weather.id} />
+      </cityContext.Provider>
+
     </div>
   )
 }
 
 export default Home
+
