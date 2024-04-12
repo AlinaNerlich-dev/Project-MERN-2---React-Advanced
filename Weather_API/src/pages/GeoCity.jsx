@@ -5,10 +5,9 @@ import { dayOrNight } from "../components/functions";
 
 const GeoCity = () => {
     const city = useContext(cityContext);
+    console.log(city)
     const icon = city.weather[0].icon;
- 
     const weather = city.weather[0].main;
-    console.log(weather)
     const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     const dayOrNightChar = icon.slice(-1);
     const temp = kelvinToCelcius(city.main.temp);

@@ -2,25 +2,25 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom"
-import Home from "./pages/Home.jsx"
 import GeoForecast from "./pages/GeoForecast.jsx"
 import GeoCity from "./pages/GeoCity.jsx"
 import CitiesForecast from "./pages/CitiesForecast.jsx"
+import SelectedCity from "./pages/SelectedCity.jsx"
 
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: <GeoCity />,
     },
     {
       path: "/geoforecast",
       element: <GeoForecast />,
     },
     {
-      path: "/cities",
-      element: <GeoCity />,
+      path: "/selectedCity",
+      element: <SelectedCity />,
     },
     {
       path: "/citiesforecast",
