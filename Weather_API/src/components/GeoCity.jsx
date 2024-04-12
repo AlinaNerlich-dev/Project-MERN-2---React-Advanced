@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import cityContext from "../context/cityContext";
-import { kelvinToCelcius } from "../components/functions";
-import { dayOrNight } from "../components/functions";
+import { kelvinToCelcius } from "./functions";
+import { dayOrNight } from "./functions";
 
 const GeoCity = () => {
     const city = useContext(cityContext);
-    console.log(city)
     const icon = city.weather[0].icon;
     const weather = city.weather[0].main;
     const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;

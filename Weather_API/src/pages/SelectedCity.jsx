@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { cities } from "../data";
 import { kelvinToCelcius } from "../components/functions";
 import { dayOrNight } from "../components/functions";

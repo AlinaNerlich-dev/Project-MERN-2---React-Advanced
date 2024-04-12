@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Template from "./Template";
-import mockup from "./mockup";
+import Template from "../components/Template";
+import mockup from "../components/mockup";
 import cityContext from "../context/cityContext";
 
 // const home = document.getElementById("home");
@@ -64,7 +64,7 @@ const Home = () => {
       <div id="welcome">
         <p>Welcome to</p>
         <cityContext.Provider value={mockup}>
-          <Template selectedCity={selectedCity ? selectedCity : null}/>
+          <Template {...(selectedCity ? selectedCity : null)}/>
         </cityContext.Provider>
       </div>
       <div id="forecast">
