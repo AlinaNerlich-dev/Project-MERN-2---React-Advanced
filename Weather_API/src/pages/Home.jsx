@@ -1,48 +1,74 @@
-import { useState } from "react";
+/* eslint-disable no-inner-declarations */
+import { useEffect, useState } from "react";
 import Template from "../components/Template";
 import mockup from "../components/mockup";
 import cityContext from "../context/cityContext";
+import { cities } from "../data";
 
-// const home = document.getElementById("home");
+const home = document.getElementById("home");
 
 const Home = () => {
-  //     const [geoLocation, setGeoLocation] = useState({
-  //         lat: null,
-  //         lon: null
-  //     })
 
-  // useEffect(()=>{
-  //          const fetchCurrentPosition = () => {
-  //                 if (navigator.geolocation) {
-  //                         navigator.geolocation.getCurrentPosition(showPosition);
-  //                       } else {
-  //                         home.innerHTML = "Geolocation is not supported by this browser.";
-  //                       }
-  //                     }
+   // GEO Location  API Call
+  const [geoLocation, setGeoLocation] = useState({
+      lat: null,
+      lon: null
+  })
 
-  //             function showPosition(position) {
-  //                 setGeoLocation(
-  //                     {
-  //                         lat: position.coords.latitude,
-  //                         lon: position.coords.longitude
-  //                     }
-  //                 )
-  //                 }
-  //                 fetchCurrentPosition();
-  //         }, []);
-  //         console.log(geoLocation)
+  useEffect(()=>{
+           const fetchCurrentPosition = () => {
+                  if (navigator.geolocation) {
+                          navigator.geolocation.getCurrentPosition(showPosition);
+                        } else {
+                          home.innerHTML = "Geolocation is not supported by this browser.";
+                        }
+                      }
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const response = await fetch(
-  //       `https://api.openweathermap.org/data/2.5/weather?lat=-8.4483318&lon=115.3100376&appid=2b9b192a3fd2926952d5abd3b15aac0f`
-  //     ).then((response) => response.json());
-  //     console.log(response);
-  //   })();
-  // }, [geoLocation]);
+              function showPosition(position) {
+                  setGeoLocation(
+                      {
+                          lat: position.coords.latitude,
+                          lon: position.coords.longitude
+                      }
+                  )
+                  }
+            fetchCurrentPosition();
+          }, []);
+          console.log(geoLocation)
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=-8.4483318&lon=115.3100376&appid=2b9b192a3fd2926952d5abd3b15aac0f`
+      ).then((response) => response.json());
+      console.log(response);
+    })();
+  }, [geoLocation]);
 
 
+
+
+  // Selected City API Call
   const [selectedCity, setSelectedCity] = useState();
+  let conditionalProp = {};
+
+
+  useEffect(()=>{
+    const city = cities.find((city) => city.name == selectedCity);
++
+    (async () => {
+       
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
+        ).then((response) => response.json());
+
+        conditionalProp['selectedCity'] = { ...selectedCity, selectedCity: response } 
+
+        console.log(conditionalProp);
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedCity])
+
 
   return (
     <div id="home">
@@ -64,7 +90,7 @@ const Home = () => {
       <div id="welcome">
         <p>Welcome to</p>
         <cityContext.Provider value={mockup}>
-          <Template {...(selectedCity ? selectedCity : null)}/>
+          <Template {...conditionalProp}/>
         </cityContext.Provider>
       </div>
       <div id="forecast">
