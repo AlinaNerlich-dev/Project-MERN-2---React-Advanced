@@ -50,7 +50,8 @@ const Home = () => {
 
   // Selected City API Call
   const [selectedCity, setSelectedCity] = useState();
-  let conditionalProp = {};
+  const [data, setData] = useState();
+
 
 
   useEffect(()=>{
@@ -60,13 +61,12 @@ const Home = () => {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
         ).then((response) => response.json());
-
-        conditionalProp['selectedCity'] = { ...selectedCity, selectedCity: response } 
+        setData(response)
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedCity])
 
-    console.log(conditionalProp)
+    console.log(data)
   return (
     <div id="home">
       <div id="selection">
@@ -87,10 +87,10 @@ const Home = () => {
       <div id="welcome">
         <p>Welcome to</p>
         <cityContext.Provider value={mockup}>
-          <Template {...conditionalProp.selectedCity}/>
+          <Template selectedCity={data? data : null}/>
         </cityContext.Provider>
       </div>
-      <div id="forecast">
+      <div id="forecast"> 
         <p>5 days forecast</p>
         <input type="checkbox" />
       </div>
