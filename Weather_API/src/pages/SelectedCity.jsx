@@ -2,7 +2,7 @@
 import { kelvinToCelcius } from "../components/functions";
 import { dayOrNight } from "../components/functions";
 
-const SelectedCity = ({ selectedCity }) => {
+const SelectedCity = ( selectedCity ) => {
   console.log(selectedCity)
   const icon = selectedCity.weather[0].icon;
   const weather = selectedCity.weather[0].main;
