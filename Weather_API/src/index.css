@@ -37,3 +37,18 @@
   width: 200px;
   height: 200px;
 }
+#weather-icon{
+  display: flex;
+  
+  justify-content: center;
+}
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+#weather-icon > h2{
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}

@@ -20,3 +20,9 @@ https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={API k
 Structure
 - Template all
 - Component 5 days
+
+API Call Forecast:
+https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+
+Example:
+https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid={API key}

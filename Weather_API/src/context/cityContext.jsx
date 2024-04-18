@@ -1,7 +1,7 @@
 import {createContext} from 'react'
 
-const cityContext = createContext({
+const CityContext = createContext({
     city: {},
   });
 
-export default cityContext
+export default CityContext

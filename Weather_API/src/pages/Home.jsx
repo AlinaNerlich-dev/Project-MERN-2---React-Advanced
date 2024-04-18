@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-inner-declarations */
 import { useEffect, useState } from "react";
-import Template from "../components/Template";
-import mockup from "../components/mockup";
-import cityContext from "../context/cityContext";
 import { cities } from "../data";
+import { useOutletContext } from "react-router-dom";
+import GeoCity from "../components/GeoCity";
+import SelectedCity from "./SelectedCity";
+import mockup from "../components/mockup"
 
 // const home = document.getElementById("home");
 
@@ -47,55 +49,37 @@ const Home = () => {
 
 
 
+ // Selected City API Call
+ // eslint-disable-next-line no-unused-vars
+ const [selectedCity, setSelectedCity] = useOutletContext();
+ const [cityWeather, setCity] = useState();
+console.log(selectedCity)
 
-  // Selected City API Call
-  const [selectedCity, setSelectedCity] = useState();
-  const [data, setData] = useState();
+ useEffect(()=>{
+  const city = cities.find((city) => city.name == selectedCity);
+  console.log(city);
+   (async () => {
+     const response = await fetch(
+       `https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
+       ).then((response) => response.json());
+      setCity(response)
+   })();
 
+   }, [selectedCity])
 
-
-  useEffect(()=>{
-    const city = cities.find((city) => city.name == selectedCity);
-+
-    (async () => {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
-        ).then((response) => response.json());
-        setData(response)
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedCity])
-
-    console.log(data)
   return (
-    <div id="home">
-      <div id="selection">
-        <p>Choose a city:</p>
-        <select
-          name="cities"
-          id="cities"
-          onChange={(e) => setSelectedCity(e.target.value)}
-        >
-          <option value="none">Select a City</option>
-          <option value="Düsseldorf">Düsseldorf</option>
-          <option value="Münster">Münster</option>
-          <option value="Chandigarh">Chandigarh</option>
-          <option value="Dehli">Dehli</option>
-          <option value="Mumbai">Mumbai</option>
-        </select>
-      </div>
-      <div id="welcome">
-        <p>Welcome to</p>
-        <cityContext.Provider value={mockup}>
-          <Template selectedCity={data? data : null}/>
-        </cityContext.Provider>
-      </div>
-      <div id="forecast"> 
-        <p>5 days forecast</p>
-        <input type="checkbox" />
-      </div>
-    </div>
-  );
+          <>
+          { selectedCity 
+            ? 
+              <SelectedCity selectedCity={cityWeather} /> 
+            :
+              <GeoCity city={mockup}/>
+          }
+          </>
+        );
+            
+     
 };
 
 export default Home;
+

@@ -1,35 +1,41 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom"
-import GeoForecast from "./pages/GeoForecast.jsx"
-import CitiesForecast from "./pages/CitiesForecast.jsx"
-import SelectedCity from "./pages/SelectedCity.jsx"
-import Home from "./pages/Home.jsx"
-
+import { Outlet } from "react-router-dom"
+import { useState } from "react";
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Home />,
-    },
-    {
-      path: "/geoforecast",
-      element: <GeoForecast />,
-    },
-    {
-      path: "/selectedCity",
-      element: <SelectedCity />,
-    },
-    {
-      path: "/citiesforecast",
-      element: <CitiesForecast />,
-    },
-  ])
+
+   // Geoforecast
+
+  //  const [geoForecast, setGeoforecast] = useState(false)
+  const [selectedCity, setSelectedCity] = useState();
 
   return (
-      <RouterProvider router={router} />
+    <div id="selection">
+    <p>Choose a city:</p>
+    <select
+      name="cities"
+      id="cities"
+      onChange={(e) => setSelectedCity(e.target.value)}
+    >
+      <option value="none">Select a City</option>
+      <option value="Düsseldorf">Düsseldorf</option>
+      <option value="Münster">Münster</option>
+      <option value="Chandigarh">Chandigarh</option>
+      <option value="Dehli">Dehli</option>
+      <option value="Mumbai">Mumbai</option>
+    </select>
+
+    <div id="home">
+      <div id="welcome">
+        <p>Welcome to</p>
+          <Outlet context={[selectedCity, setSelectedCity]} />
+        </div>
+      {/* <div id="forecast"> 
+        <p>5 days forecast</p>
+        <input type="checkbox" onChange={() => setGeoforecast(!geoForecast)}/>
+        { geoForecast && <Forecast data={geoForecast} />}
+      </div> */}
+    </div>
+  </div>
   )
 }
 

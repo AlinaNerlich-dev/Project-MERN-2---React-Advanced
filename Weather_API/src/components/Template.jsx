@@ -8,9 +8,10 @@ const Template = ( {selectedCity} ) => { // When do I need to use {} around the 
     <>
           { selectedCity 
           ? 
-          <SelectedCity selectedCity={selectedCity} /> 
+            <SelectedCity selectedCity={selectedCity} /> 
+          
           :
-          <GeoCity />
+            <GeoCity />
           }
           
      

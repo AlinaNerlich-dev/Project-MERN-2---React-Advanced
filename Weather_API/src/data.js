@@ -16,8 +16,8 @@ const cities = [
     },
     {
         name: "Dehli",
-        latitude:28.704060,
-        longitude:77.102493,
+        latitude:28.65381,
+        longitude:77.22897,
     },
     {
         name: "Mumbai",
