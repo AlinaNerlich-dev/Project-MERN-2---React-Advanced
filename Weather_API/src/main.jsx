@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="geoforecast" element={<GeoForecast />} />
-        <Route path="selectedCity/:name" element={<SelectedCity />} />
+        <Route path="selectedCity" element={<SelectedCity />} />
         <Route path="citiesforecast/:id" element={<CitiesForecast />} />
       </Route>
     </Routes>

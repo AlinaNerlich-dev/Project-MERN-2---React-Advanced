@@ -47,33 +47,32 @@ const Home = () => {
   //   })();
   // }, [geoLocation]);
 
+  // eslint-disable-next-line no-unused-vars
+  const [selectedCity, setSelectedCity] = useOutletContext();
+  const [cityData, setCityData] = useState();
+ console.log(selectedCity)
 
 
- // Selected City API Call
- // eslint-disable-next-line no-unused-vars
- const [selectedCity, setSelectedCity] = useOutletContext();
- const [cityWeather, setCity] = useState();
-console.log(selectedCity)
-
- useEffect(()=>{
-  const city = cities.find((city) => city.name == selectedCity);
-  console.log(city);
-   (async () => {
-     const response = await fetch(
-       `https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
-       ).then((response) => response.json());
-      setCity(response)
-   })();
-
-   }, [selectedCity])
+  useEffect(()=>{
+    const city = cities.find((city) => city.name == selectedCity);
+    
+    (async () => {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
+        ).then((response) => response.json());
+        console.log(response)
+        setCityData(response)
+    })();
+    
+    }, [selectedCity])
+    console.log(cityData)
 
   return (
-          <>
-          { selectedCity 
-            ? 
-              <SelectedCity selectedCity={cityWeather} /> 
+          <>{ 
+            selectedCity ?
+            <SelectedCity city={cityData} />
             :
-              <GeoCity city={mockup}/>
+            <GeoCity city={mockup}/>
           }
           </>
         );
