@@ -49,28 +49,11 @@ const Home = () => {
 
   // eslint-disable-next-line no-unused-vars
   const [selectedCity, setSelectedCity] = useOutletContext();
-  const [cityData, setCityData] = useState();
- console.log(selectedCity)
-
-
-  useEffect(()=>{
-    const city = cities.find((city) => city.name == selectedCity);
-    
-    (async () => {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
-        ).then((response) => response.json());
-        console.log(response)
-        setCityData(response)
-    })();
-    
-    }, [selectedCity])
-    console.log(cityData)
-
+  
   return (
           <>{ 
             selectedCity ?
-            <SelectedCity city={cityData} />
+            <SelectedCity key={selectedCity} selectedCity={selectedCity} />
             :
             <GeoCity city={mockup}/>
           }
