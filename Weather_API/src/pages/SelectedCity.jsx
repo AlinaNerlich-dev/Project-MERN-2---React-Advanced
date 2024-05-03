@@ -7,24 +7,17 @@ import { dayOrNight } from "../components/functions";
 
 const SelectedCity = ( {selectedCity} ) => {
 
-  const [cityData, setCityData] = useState({});
+  const [cityData, setCityData] = useState();
   const city = cities.find((city) => city.name == selectedCity);
-  let fontColor;
-  let weather;
-  let iconUrl;
-  let temp;
+  const icon = cityData?.weather[0].icon;
+  const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+  const weather = cityData?.weather[0].main;
+
+  const dayOrNightChar = icon?.slice(-1);
+  const temp = kelvinToCelcius(cityData?.main.temp);
+  const fontColor = dayOrNight(dayOrNightChar); 
 
 
-  async function setVariables (cityData){
-    const icon = cityData.weather[0].icon;
-    const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-    const weather = cityData.weather[0].main;
-    const dayOrNightChar = icon.slice(-1);
-    const temp = kelvinToCelcius(cityData.main.temp);
-    const fontColor = dayOrNight(dayOrNightChar); 
-    return (iconUrl, weather, dayOrNightChar, temp, fontColor)
-  }
-  
   
   useEffect(()=>{
     console.log(`Use Effect renders`);
@@ -32,18 +25,12 @@ const SelectedCity = ( {selectedCity} ) => {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
         ).then((response) => response.json());
-        console.log(await response)
-        
-        setCityData(await response)
-        return setVariables(await response)
+        console.log(response)
+        setCityData(response)
     })();
-    
     }, [city])
-    
- // eslint-disable-next-line no-unused-vars
 
- 
-
+  
   return (
     <>
     { cityData && (
