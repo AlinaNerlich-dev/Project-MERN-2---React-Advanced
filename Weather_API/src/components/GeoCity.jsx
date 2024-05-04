@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { kelvinToCelcius } from "./functions";
 import { dayOrNight } from "./functions";
+import ForecastCheckbox from "./Forecast/ForecastCheckbox";
 
 const GeoCity = ( { city } ) => {
 
@@ -10,6 +11,8 @@ const GeoCity = ( { city } ) => {
     const dayOrNightChar = icon.slice(-1);
     const temp = kelvinToCelcius(city.main.temp);
     const fontColor = dayOrNight(dayOrNightChar);
+    const lat = city.coord.lat;
+    const lon = city.coord.lon
 
   return (
     <div>
@@ -17,6 +20,7 @@ const GeoCity = ( { city } ) => {
           <h2>{weather}</h2>
           <img src={iconUrl} alt="" />
           <p>The current temperature is: </p><span style={{color:`${fontColor}`}} id="temp">{temp} Celcius</span>
+          <ForecastCheckbox cityLat={lat} cityLon={lon}/>
     </div>
   )
 }

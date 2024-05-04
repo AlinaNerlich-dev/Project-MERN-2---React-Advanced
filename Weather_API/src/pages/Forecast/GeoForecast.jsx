@@ -1,27 +1,27 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect} from 'react';
-import Forecast from "../../components/Forecast/Forecast"
 
-const GeoForecast = ( { geoLocation }) => {
+const GeoForecast = ( forecast) => {
+  const forecastData = forecast;
+  console.log(forecastData)
 
- const [data, setData] = useState();
+  function createCard(){
+    let cards = [];
+    for(let i=0; i<5; i++)
+      {
+        cards.push(<h1>{forecastData.data[i].main.temp}</h1>)      
+      }     
+      return cards; 
+    }
 
- useEffect(()=>{
-   (async () => {
-     const response = await fetch(
-       `https://api.openweathermap.org/data/2.5/forecast?lat=${geoLocation.coord.lat}&lon=${geoLocation.coord.lon}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
-       ).then((response) => response.json());
-       setData(response)
-       console.log(response)
-   })();
-   }, [])
 
-  
   return (
-    <div>
-      <Forecast data={data}/>
-      </div>
-  )
+      <>
+      {/* <h2>{forecastData.data[0].main.temp}</h2> */}
+        {createCard()}
+      </>
+    )
+
 }
 
 export default GeoForecast

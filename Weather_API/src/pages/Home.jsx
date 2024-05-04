@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-inner-declarations */
-import { useEffect, useState } from "react";
-import { cities } from "../data";
+// import { useEffect, useState } from "react";
+// import { cities } from "../data";
 import { useOutletContext } from "react-router-dom";
 import GeoCity from "../components/GeoCity";
 import SelectedCity from "./SelectedCity";
 import mockup from "../components/mockup"
+
 
 // const home = document.getElementById("home");
 
@@ -49,7 +50,7 @@ const Home = () => {
 
   // eslint-disable-next-line no-unused-vars
   const [selectedCity, setSelectedCity] = useOutletContext();
-  
+
   return (
           <>{ 
             selectedCity ?
@@ -57,6 +58,7 @@ const Home = () => {
             :
             <GeoCity city={mockup}/>
           }
+     
           </>
         );
             
