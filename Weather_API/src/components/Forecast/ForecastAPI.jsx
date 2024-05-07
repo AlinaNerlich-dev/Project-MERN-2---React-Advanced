@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
 import { useState, useEffect } from 'react';
 import GeoForecast from '../../pages/Forecast/GeoForecast';
+import Loader from '../Loader';
 
 const ForecastAPI = ({lat, lon}) => {
 
@@ -21,8 +21,8 @@ const ForecastAPI = ({lat, lon}) => {
 
 
   return (
-    <div>
-      { data && <GeoForecast data={data.list}/>}
+    <div id="forecastWrapper">
+      { data ? <GeoForecast data={data.list}/> : <Loader />}
     </div>
   )
 }

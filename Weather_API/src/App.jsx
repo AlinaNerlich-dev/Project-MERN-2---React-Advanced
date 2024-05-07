@@ -11,28 +11,29 @@ function App() {
   console.log(selectedCity)
 
   return (
-    <div id="selection">
-    <p>Choose a city:</p>
+    <>
+    <div id="select">
     <select
+      defaultValue="none"
       name="cities"
       id="cities"
       onChange={(e) => setSelectedCity(e.target.value)}
     >
-      <option value="none">Select a City</option>
+      <option disabled value="none">Select a City</option>
       <option value="Düsseldorf" name="Duesseldorf">Düsseldorf</option>
       <option value="Münster" name="Muenster">Münster</option>
       <option value="Chandigarh" name="Chandigarh">Chandigarh</option>
       <option value="Dehli" name="Dehli">Dehli</option>
       <option value="Mumbai" name="Mumbai">Mumbai</option>
     </select>
-
+    </div>
     <div id="home">
       <div id="welcome">
-        <p>Welcome to</p>
+        <p>- Welcome to -</p>
           <Outlet context={[selectedCity, setSelectedCity]} />
       </div>
     </div>
-  </div>
+    </>
   )
 }
 

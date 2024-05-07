@@ -1,24 +1,33 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect} from 'react';
+import ForecastCard from "../../components/Forecast/ForecastCard";
 
 const GeoForecast = ( forecast) => {
-  const forecastData = forecast;
-  console.log(forecastData)
 
-  function createCard(){
-    let cards = [];
-    for(let i=0; i<5; i++)
-      {
-        cards.push(<h1>{forecastData.data[i].main.temp}</h1>)      
-      }     
-      return cards; 
+  const forecastData = forecast.data;
+
+  function nthElementFinder(a, n) {
+    const result = [];
+    let i = n - 1;
+    while (i < a.length) {
+        result.push(a[i]);
+        i += n;
     }
-
+    return result;
+  }
+  const filteredArray = nthElementFinder(forecastData, 8);
 
   return (
       <>
-      {/* <h2>{forecastData.data[0].main.temp}</h2> */}
-        {createCard()}
+        <ul>
+            {filteredArray.map((day) =>{
+              return(
+                <li key={day.dt}>
+                  <ForecastCard day={day} /> 
+                </li>
+              )
+            })}
+          
+        </ul>
       </>
     )
 
@@ -26,3 +35,4 @@ const GeoForecast = ( forecast) => {
 
 export default GeoForecast
 
+//// How can I use the index as an id?

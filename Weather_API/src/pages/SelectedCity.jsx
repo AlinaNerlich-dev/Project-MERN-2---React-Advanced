@@ -4,7 +4,7 @@ import { cities } from "../data";
 import { kelvinToCelcius } from "../components/functions";
 import { dayOrNight } from "../components/functions";
 import ForecastCheckbox from "../components/Forecast/ForecastCheckbox";
-
+import Loader from "../components/Loader";
 
 const SelectedCity = ( {selectedCity} ) => {
 
@@ -34,7 +34,7 @@ const SelectedCity = ( {selectedCity} ) => {
   
   return (
     <>
-    { cityData && (
+    { cityData ? (
       <div>
         <h1 style={{color:`${fontColor}`}}>{(cityData.name == "Konkan Division") ? "Mumbai" : cityData.name}</h1>
         <div id="weather-icon">
@@ -46,11 +46,11 @@ const SelectedCity = ( {selectedCity} ) => {
           { cityData.name == "Chandigarh" && <img className="cityImg" src="https://upload.wikimedia.org/wikipedia/commons/7/76/Open_Hand_monument%2C_Chandigarh.jpg" alt="Chandigarh" />}
           { cityData.name == "Delhi" && <img className="cityImg" src="https://cdn.britannica.com/16/189816-050-5B006088/neighbourhood-Paharganj-New-Delhi-India.jpg" alt="Dehli" />}
           { cityData.name == "Konkan Division" && <img className="cityImg" src="https://images.lifestyleasia.com/wp-content/uploads/sites/6/2023/02/17135842/things-to-do-in-mumbai-travel-guide-india-destinations-attractions-to-visit.jpg?tr=w-1200,h-900" alt="Mumbai" />}
-        <p>The current temperature is: </p><span style={{color:`${fontColor}`}} id="temp">{temp} Celcius</span>
-        <ForecastCheckbox data={cityData}/>
+        <p>The current temperature is: </p><span style={{color:`${fontColor}`}} id="temp">{temp} °C</span>
+        <ForecastCheckbox cityLat={city.latitude} cityLon={city.longitude}/>
       </div>
       )
-    }
+    : <Loader />}
   </>
   )
 }
