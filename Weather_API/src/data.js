@@ -1,11 +1,11 @@
 const cities = [
     {
-        name: "Düsseldorf",
+        name: "Duesseldorf",
         latitude:51.227741,
         longitude:6.773456,
     },
     {
-        name: "Münster",
+        name: "Muenster",
         latitude:51.960667,
         longitude:7.626135,
     },

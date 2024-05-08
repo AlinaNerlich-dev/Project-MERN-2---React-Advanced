@@ -5,8 +5,10 @@ import { kelvinToCelcius } from "../components/functions";
 import { dayOrNight } from "../components/functions";
 import ForecastCheckbox from "../components/Forecast/ForecastCheckbox";
 import Loader from "../components/Loader";
+// import { useNavigate } from "react-router-dom";
 
 const SelectedCity = ( {selectedCity} ) => {
+  console.log(selectedCity)
 
   const [cityData, setCityData] = useState();
   const city = cities.find((city) => city.name == selectedCity);
@@ -18,10 +20,9 @@ const SelectedCity = ( {selectedCity} ) => {
   const temp = kelvinToCelcius(cityData?.main.temp);
   const fontColor = dayOrNight(dayOrNightChar); 
 
-
+ 
   
   useEffect(()=>{
-    console.log(`Use Effect renders`);
     (async () => {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
