@@ -19,8 +19,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="geoforecast" element={<GeoForecast />} />
-        <Route path="/selectedCity/:name" element={<SelectedCity />} />
-        <Route path="citiesforecast/:id" element={<CitiesForecast />} />
+        <Route path="/selectedCity/:cityName" element={<SelectedCity />} />
+        <Route path="/selectedCity/:cityName/forecast" element={<CitiesForecast />} />
       </Route>
     </Routes>
   </BrowserRouter>

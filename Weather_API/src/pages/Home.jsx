@@ -2,7 +2,6 @@
 /* eslint-disable no-inner-declarations */
 // import { useEffect, useState } from "react";
 // import { cities } from "../data";
-import { useOutletContext } from "react-router-dom";
 import GeoCity from "../components/GeoCity";
 import SelectedCity from "./SelectedCity";
 import mockup from "../components/mockup"
@@ -49,14 +48,16 @@ const Home = () => {
   // }, [geoLocation]);
 
   // eslint-disable-next-line no-unused-vars
-  const [selectedCity, setSelectedCity] = useOutletContext();
+  // const [selectedCity, setSelectedCity] = useOutletContext();
+  
+  const geoLocation = true;
 
   return (
           <>{ 
-            selectedCity ?
-            <SelectedCity key={selectedCity} selectedCity={selectedCity} />
-            :
+            geoLocation ?
             <GeoCity city={mockup}/>
+            :
+            <SelectedCity />
           }
      
           </>

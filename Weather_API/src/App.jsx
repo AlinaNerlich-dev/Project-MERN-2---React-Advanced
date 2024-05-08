@@ -1,22 +1,21 @@
-import { Outlet } from "react-router-dom"
-import { useState } from "react";
-
-
-
+import { Outlet,useNavigate } from "react-router-dom"
+// import { useEffect, useState } from "react";
 
 function App() {
 
    // Geoforecast
 
   //  const [geoForecast, setGeoforecast] = useState(false)
-  const [selectedCity, setSelectedCity] = useState(); 
-  // const navigate = useNavigate();
+  // const [selectedCity, setSelectedCity] = useState(); 
+  const navigate = useNavigate();
 
   function handleChange(e){
-    const cityName = e.target.value
-    console.log(e.target.value)
-    setSelectedCity(cityName);
-    // navigate(`selectedCity/${city.name}`);
+    if (e.target.value == "home"){
+      navigate(`/`);    
+    }
+    else {
+      navigate(`selectedCity/${e.target.value}`);
+    }
   }
 
   return (
@@ -27,7 +26,6 @@ function App() {
       name="cities"
       id="cities"
       onChange={(e) => handleChange(e)}
-      // onChange={(e) => setSelectedCity(e.target.value)}
     >
       <option disabled value="none">Select a City</option>
       <option value="Duesseldorf" name="Duesseldorf">Düsseldorf</option>
@@ -35,12 +33,13 @@ function App() {
       <option value="Chandigarh" name="Chandigarh">Chandigarh</option>
       <option value="Dehli" name="Dehli">Dehli</option>
       <option value="Mumbai" name="Mumbai">Mumbai</option>
+      <option value="home" name="Home">My Current Location</option>
     </select>
     </div>
     <div id="home">
       <div id="welcome">
         <p>- Welcome to -</p>
-          <Outlet context={[selectedCity, setSelectedCity]} />
+          <Outlet/>
       </div>
     </div>
     </>

@@ -5,13 +5,12 @@ import { kelvinToCelcius } from "../components/functions";
 import { dayOrNight } from "../components/functions";
 import ForecastCheckbox from "../components/Forecast/ForecastCheckbox";
 import Loader from "../components/Loader";
-// import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const SelectedCity = ( {selectedCity} ) => {
-  console.log(selectedCity)
-
+const SelectedCity = (  ) => {
+  let {cityName} = useParams();
   const [cityData, setCityData] = useState();
-  const city = cities.find((city) => city.name == selectedCity);
+  const city = cities.find((city) => city.name == cityName);
   const icon = cityData?.weather[0].icon;
   const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
   const weather = cityData?.weather[0].main;
