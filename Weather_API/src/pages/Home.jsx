@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-inner-declarations */
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import { cities } from "../data";
 import GeoCity from "../components/GeoCity";
-import SelectedCity from "./SelectedCity";
 import mockup from "../components/mockup"
 
 
@@ -50,20 +49,12 @@ const Home = () => {
   // eslint-disable-next-line no-unused-vars
   // const [selectedCity, setSelectedCity] = useOutletContext();
   
-  const geoLocation = true;
 
   return (
-          <>{ 
-            geoLocation ?
-            <GeoCity city={mockup}/>
-            :
-            <SelectedCity />
-          }
-     
-          </>
-        );
-            
-     
+        <>
+          <GeoCity cityData={mockup} />         
+        </>
+        )  
 };
 
 export default Home;

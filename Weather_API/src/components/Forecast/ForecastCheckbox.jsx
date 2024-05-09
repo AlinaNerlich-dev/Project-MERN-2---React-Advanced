@@ -1,18 +1,23 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import ForecastAPI from "./ForecastAPI"
+import ForecastAPI from "./ForecastAPI";
 
-const ForecastCheckbox = ( { cityLat, cityLon } ) => {
-  const [geoForecast, setGeoforecast] = useState(false);
+const ForecastCheckbox = () => {
+  const [forecast, setForecast] = useState(false);
+
+  function handleCheckbox() {
+    setForecast(!forecast);
+  }
+
   return (
-        <>  
-          <div id="forecast"> 
-            <p>5 days forecast</p>
-            <input type="checkbox" onChange={() => setGeoforecast(!geoForecast)}/>
-            { geoForecast && <ForecastAPI lat={cityLat} lon={cityLon}/>}
-          </div>
-        </>
-  )
-}
+    <>
+      <div id="forecast">
+        <p>5 days forecast</p>
+        <input type="checkbox" onClick={() => handleCheckbox()} />
+        {forecast && <ForecastAPI />}
+      </div>
+    </>
+  );
+};
 
-export default ForecastCheckbox
+export default ForecastCheckbox;

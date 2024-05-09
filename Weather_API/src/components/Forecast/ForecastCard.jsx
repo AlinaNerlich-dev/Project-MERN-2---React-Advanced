@@ -9,8 +9,6 @@ const ForecastCard = ({day}) => {
     const icon = day.weather[0].icon;
     const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
-
-    console.log(weekDay)
   return (
     <div className="forecastCard">
         <h2>{weekDay}</h2>
