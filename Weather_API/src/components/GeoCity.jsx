@@ -5,13 +5,15 @@ import ForecastCheckbox from "./Forecast/ForecastCheckbox";
 import Loader from "./Loader";
 import GeoContext from "../context/geoContext";
 
-const GeoCity = ({ cityData }) => {
+const GeoCity = ({ cityData }) => { 
+  console.log(cityData)
 
   const icon = cityData.weather[0].icon;
   const weather = cityData.weather[0].main;
   const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
   const dayOrNightChar = icon.slice(-1);
-  const temp = kelvinToCelcius(cityData.main.temp);
+  // const temp = kelvinToCelcius(cityData.main.temp);
+  const temp = cityData.main.temp;
   const fontColor = dayOrNight(dayOrNightChar);
 
   const geoContext = {

@@ -3,7 +3,7 @@ import ForecastCard from "./ForecastCard";
 
 const GeoForecast = (forecast) => {
   const forecastData = forecast.data;
-
+  console.log(forecastData)
   function nthElementFinder(a, n) {
     const result = [];
     let i = n - 1;
