@@ -12,8 +12,7 @@ const GeoCity = ({ cityData }) => {
   const weather = cityData.weather[0].main;
   const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
   const dayOrNightChar = icon.slice(-1);
-  // const temp = kelvinToCelcius(cityData.main.temp);
-  const temp = cityData.main.temp;
+  const temp = kelvinToCelcius(cityData.main.temp);
   const fontColor = dayOrNight(dayOrNightChar);
 
   const geoContext = {

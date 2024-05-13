@@ -8,29 +8,32 @@ const home = document.getElementById("home");
 
 const Home = () => {
   const [geoLocation, setGeoLocation] = useState({
-    lat: null,
-    lon: null,
+    lat: "",
+    lon: "",
   });
 
   const [cityData, setCityData] = useState();
 
-  useEffect(() => {
-    const fetchCurrentPosition = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        home.innerHTML = "Geolocation is not supported by this browser.";
-      }
-    };
 
-    function showPosition(position) {
+  function fetchCurrentPosition() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      home.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
       setGeoLocation({
         lat: position.coords.latitude,
         lon: position.coords.longitude,
       });
-    }
-    fetchCurrentPosition();
-  }, []);
+    }    
+
+  useEffect(()=>{
+   fetchCurrentPosition();
+    }, [])
+    
 
   useEffect(() => {
     (async () => {
@@ -41,7 +44,12 @@ const Home = () => {
     })();
   }, [geoLocation]);
 
-  return <>{cityData ? <GeoCity cityData={cityData} /> : <Loader />}</>;
-};
+
+  return ( 
+  <>
+  {cityData ? <GeoCity cityData={cityData} /> : <Loader />}
+  </>
+  )
+}
 
 export default Home;
