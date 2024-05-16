@@ -6,8 +6,6 @@ import Loader from "./Loader";
 import GeoContext from "../context/geoContext";
 
 const GeoCity = ({ cityData }) => { 
-  console.log(cityData)
-
   const icon = cityData.weather[0].icon;
   const weather = cityData.weather[0].main;
   const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;

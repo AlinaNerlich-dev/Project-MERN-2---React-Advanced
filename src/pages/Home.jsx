@@ -29,7 +29,7 @@ const Home = () => {
         lat: position.coords.latitude,
         lon: position.coords.longitude,
       });
-    }    
+    }     
 
   useEffect(()=>{
    fetchCurrentPosition();
@@ -40,11 +40,11 @@ const Home = () => {
     if (!geoLocation.lat || !geoLocation.lon) return
     (async () => {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${geoLocation.lat}&lon=${geoLocation.lon}&appid=2b9b192a3fd2926952d5abd3b15aac0f&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${geoLocation.lat}&lon=${geoLocation.lon}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
       ).then((response) => response.json());
       setCityData(response);
     })();
-  }, [geoLocation]);
+  }, [geoLocation.lat, geoLocation.lon]);
 
 
 

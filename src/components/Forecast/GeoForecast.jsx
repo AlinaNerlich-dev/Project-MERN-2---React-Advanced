@@ -1,26 +1,50 @@
 /* eslint-disable react/prop-types */
 import ForecastCard from "./ForecastCard";
+import { kelvinToCelcius } from "../functions";
 
-const GeoForecast = (forecast) => {
-  const forecastData = forecast.data;
-  console.log(forecastData)
-  function nthElementFinder(a, n) {
-    const result = [];
-    let i = n - 1;
-    while (i < a.length) {
-      result.push(a[i]);
-      i += n;
+const GeoForecast = (data) => {
+  const forecastData = data.data;
+
+  let flattenArr = [];
+  for (let i = 0; i < forecastData.length; i++) {
+    const {
+      dt_txt,
+      main: { temp },
+      weather: [{ icon }],
+    } = forecastData[i];
+    flattenArr.push({ dt_txt, temp, icon });
+  }
+
+  const newFlattenArray = flattenArr.map((timestamp) => ({
+      dt_txt: timestamp.dt_txt.slice(0, 10),
+      temp: kelvinToCelcius(timestamp.temp),
+      icon: timestamp.icon
+    } ));
+
+  const finalArry = newFlattenArray.slice(1,5)
+
+
+  const grouped = Object.groupBy(newFlattenArray, ({ dt_txt }) => dt_txt);
+
+  function avgByGroup(groupedObj) {
+    const result = {};
+  for (const key of Object.keys(groupedObj)) {
+      const group = groupedObj[key];
+      result[key] =
+        group.reduce((avg, current) => avg + current.temp, 0) / group.length;
     }
     return result;
   }
-  const filteredArray = nthElementFinder(forecastData, 8);
+
+  avgByGroup(grouped);
 
   return (
     <>
       <ul>
-        {filteredArray.map((day) => {
+        {finalArry.map((day) => {
           return (
-            <li key={day.dt}>
+      
+            <li key={day.dt_txt}>
               <ForecastCard day={day} />
             </li>
           );
