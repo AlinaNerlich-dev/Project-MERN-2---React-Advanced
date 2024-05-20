@@ -24,8 +24,7 @@ const SelectedCity = () => {
       cityLat: city.latitude,
       cityLon: city.longitude,
     };
-    console.log(geoContext)
-
+    
   useEffect(() => {
     (async () => {
       const response = await fetch(
