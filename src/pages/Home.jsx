@@ -40,6 +40,7 @@ const Home = () => {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${geoLocation.lat}&lon=${geoLocation.lon}&appid=2b9b192a3fd2926952d5abd3b15aac0f`
       ).then((response) => response.json());
+      console.log(response)
       setCityData(response);
     })();
   }, [geoLocation.lat, geoLocation.lon]);
