@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { kelvinToCelcius } from "./functions";
-import { dayOrNight } from "./functions";
+import { kelvinToCelcius } from "../utilities/functions";
+import { dayOrNight } from "../utilities/functions";
 import ForecastCheckbox from "./Forecast/ForecastCheckbox";
 import Loader from "./Loader";
 import GeoContext from "../context/geoContext";

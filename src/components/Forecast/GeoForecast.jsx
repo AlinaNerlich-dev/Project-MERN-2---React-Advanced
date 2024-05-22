@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import ForecastCard from "./ForecastCard";
-import { kelvinToCelcius } from "../functions";
+import { kelvinToCelcius } from "../../utilities/functions";
 
 const GeoForecast = (data) => {
   const forecastData = data.data;
@@ -13,20 +13,12 @@ console.log(forecastData)
       main: { temp },
       weather: [{ icon }],
     } = forecastData[i];
-    flattenArr.push({ dt_txt, temp, icon });
+    flattenArr.push({ dt_txt: dt_txt.slice(0, 10), temp: kelvinToCelcius(temp), icon });
   }
   console.log(flattenArr)
 
-  // Convert Array into usable formats
-  const formatArray = flattenArr.map((timestamp) => ({
-    ... timestamp,
-    dt_txt: timestamp.dt_txt.slice(0, 10),
-    temp: kelvinToCelcius(timestamp.temp),
-  }));
-  console.log(formatArray)
-
  // Group same days as Object
-  const grouped = Object.groupBy(formatArray, ({ dt_txt }) => dt_txt);
+  const grouped = Object.groupBy(flattenArr, ({ dt_txt }) => dt_txt);
   console.log(grouped)
 
   // Get the middle Object of each group/day
@@ -39,7 +31,7 @@ console.log(forecastData)
       <ul>
         {singleDayInfo.map((day) => {
           return (
-            <li key={day.dt_txt}>
+            <li key={day.index}>
               <ForecastCard day={day} />
             </li>
           );
