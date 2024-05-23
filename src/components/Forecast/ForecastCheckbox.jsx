@@ -4,17 +4,17 @@ import ForecastAPI from "./ForecastAPI";
 import CheckboxContext from "../../context/CheckboxContext";
 
 const ForecastCheckbox = () => {
-  const forecast = useContext(CheckboxContext);
+  const {forecast, setForecast} = useContext(CheckboxContext);
 
   function handleClick(){
-    forecast == !forecast;
+    setForecast(!forecast) ;
   }
   console.log(forecast)
   return (
     <>
       <div id="forecast">
         <p>5 days forecast</p>
-        <input type="checkbox" onClick={() => handleClick()} />
+        <input type="checkbox" id="checkbox" onClick={() => handleClick()} />
         {forecast && <ForecastAPI />}
       </div>
     </>

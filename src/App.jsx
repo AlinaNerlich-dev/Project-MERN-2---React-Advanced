@@ -6,14 +6,17 @@ function App() {
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
   const [forecast, setForecast] = useState(false);
+  const checkbox = document.getElementById("checkbox");
 
   function handleChange(e) {
 
     if (e.target.value == "home") {
       setForecast(false)
+      checkbox.checked = false;
       navigate(`/`);
     } else {
       setForecast(false)
+      checkbox.checked = false;
       navigate(`selectedCity/${e.target.value}`);
     }
   }
@@ -53,7 +56,7 @@ function App() {
       <div id="home">
         <div id="welcome">
           <p>- Welcome to -</p>
-          <CheckboxContext.Provider value={forecast}>
+          <CheckboxContext.Provider value={{forecast, setForecast}}>
             <Outlet />
           </CheckboxContext.Provider>
         </div>
