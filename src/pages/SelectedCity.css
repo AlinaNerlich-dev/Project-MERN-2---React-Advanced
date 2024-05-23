@@ -1,0 +1,17 @@
+#temp{
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  .cityImg{
+    width: 200px;
+    height: 200px;
+  }
+  #weather-icon{
+    display: flex;
+    justify-content: center;
+  }
+  #weather-icon > h2{
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+  }

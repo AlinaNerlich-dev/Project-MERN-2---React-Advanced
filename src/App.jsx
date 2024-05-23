@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import CheckboxContext from "./context/CheckboxContext";
 import { useState } from "react";
+import './App.css'
 
 function App() {
   const navigate = useNavigate();

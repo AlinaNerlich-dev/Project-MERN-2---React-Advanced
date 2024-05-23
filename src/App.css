@@ -1,0 +1,36 @@
+
+#select {
+    margin-right: 3rem;
+    text-align: right;
+    margin-bottom: 2rem;
+  }
+  select{
+    border:none;
+    padding: 10px 20px;
+    border-radius:5px;
+    background-color:#252850;
+    color: rgb(245, 243, 243);
+    box-shadow: rgb(245, 243, 243) 0px 3px 8px;
+  }
+  
+  select:focus{
+    outline:none;
+  }
+  
+  #selection > p{
+    font-weight:500
+  }
+  #welcome{
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  #welcome >p{
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0rem;
+  }
+  #welcome > div >h1{
+    font-size: 4rem;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+  }

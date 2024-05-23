@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import ForecastCard from "./ForecastCard";
 import { kelvinToCelcius } from "../../utilities/functions";
-
+import './GeoForecast.css'
 const GeoForecast = (data) => {
   const forecastData = data.data;
 

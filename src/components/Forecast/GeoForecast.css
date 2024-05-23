@@ -1,0 +1,16 @@
+
+  
+  ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+   
+  }
+  ul >li{
+    width: 150px;
+    list-style: none;
+    box-shadow: rgb(245, 243, 243) 0px 3px 8px;
+  }

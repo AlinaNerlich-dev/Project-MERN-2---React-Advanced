@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 import { useParams } from "react-router-dom";
 import GeoContext from "../context/geoContext";
 import { images } from "../utilities/images";
+import './SelectedCity.css'
 
 const SelectedCity = () => {
   let { cityName } = useParams();

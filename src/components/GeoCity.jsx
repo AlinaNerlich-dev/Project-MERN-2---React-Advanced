@@ -4,6 +4,7 @@ import { dayOrNight } from "../utilities/functions";
 import ForecastCheckbox from "./Forecast/ForecastCheckbox";
 import Loader from "./Loader";
 import GeoContext from "../context/geoContext";
+import './GeoCity.css'
 
 const GeoCity = ({ cityData }) => { 
   const icon = cityData.weather[0].icon;

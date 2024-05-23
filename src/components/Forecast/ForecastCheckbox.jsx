@@ -2,6 +2,8 @@
 import { useContext } from "react";
 import ForecastAPI from "./ForecastAPI";
 import CheckboxContext from "../../context/CheckboxContext";
+import './ForecastCheckbox.css'
+
 
 const ForecastCheckbox = () => {
   const {forecast, setForecast} = useContext(CheckboxContext);
