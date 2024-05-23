@@ -16,7 +16,7 @@ const images = [
         src:"https://cdn.britannica.com/16/189816-050-5B006088/neighbourhood-Paharganj-New-Delhi-India.jpg",
     },
     {
-        city:"Konkan Division",
+        city:"Mumbai",
         src:"https://images.lifestyleasia.com/wp-content/uploads/sites/6/2023/02/17135842/things-to-do-in-mumbai-travel-guide-india-destinations-attractions-to-visit.jpg?tr=w-1200,h-900",
     },
 ]

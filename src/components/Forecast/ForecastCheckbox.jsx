@@ -1,19 +1,16 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useContext } from "react";
 import ForecastAPI from "./ForecastAPI";
+import CheckboxContext from "../../context/CheckboxContext";
 
 const ForecastCheckbox = () => {
-  const [forecast, setForecast] = useState(false);
-
-  function handleCheckbox() {
-    setForecast(!forecast);
-  }
+  const forecast = useContext(CheckboxContext);
 
   return (
     <>
       <div id="forecast">
         <p>5 days forecast</p>
-        <input type="checkbox" onClick={() => handleCheckbox()} />
+        <input type="checkbox" onClick={() => !forecast} />
         {forecast && <ForecastAPI />}
       </div>
     </>

@@ -1,12 +1,19 @@
 import { Outlet, useNavigate } from "react-router-dom";
+import CheckboxContext from "./context/CheckboxContext";
+import { useState } from "react";
 
 function App() {
   const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
+  const [forecast, setForecast] = useState(false);
 
   function handleChange(e) {
+
     if (e.target.value == "home") {
+      setForecast(false)
       navigate(`/`);
     } else {
+      setForecast(false)
       navigate(`selectedCity/${e.target.value}`);
     }
   }
@@ -46,7 +53,9 @@ function App() {
       <div id="home">
         <div id="welcome">
           <p>- Welcome to -</p>
-          <Outlet />
+          <CheckboxContext.Provider value={forecast}>
+            <Outlet />
+          </CheckboxContext.Provider>
         </div>
       </div>
     </>
