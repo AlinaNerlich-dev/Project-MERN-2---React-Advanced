@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import GeoContext from "../context/geoContext";
 import { images } from "../utilities/images";
 import './SelectedCity.css'
+import WeatherTemplate from "../components/WeatherTemplate";
 
 const SelectedCity = () => {
   let { cityName } = useParams();
@@ -43,18 +44,8 @@ const SelectedCity = () => {
     <>
       {cityData ? (
         <div>
-          <h1 style={{ color: `${fontColor}` }}>
-            {cityData.name == "Konkan Division" ? "Mumbai" : cityData.name}
-          </h1>
-          <div id="weather-icon">
-            <h2>{weather}</h2>
-            <img src={iconUrl} alt="" />
-          </div>
+          <WeatherTemplate cityData={cityData} weather={weather} iconUrl={iconUrl} temp={temp} fontColor={fontColor}/>
           <img className="cityImg" src={findCityImg(images, cityName)} alt={cityName} />
-          <p>The current temperature is: </p>
-          <span style={{ color: `${fontColor}` }} id="temp">
-            {temp} °C
-          </span>
           <GeoContext.Provider value={geoContext}>
           <ForecastCheckbox />
           </GeoContext.Provider>

@@ -11,7 +11,7 @@ const ForecastCheckbox = () => {
   function handleClick(){
     setForecast(!forecast) ;
   }
-  console.log(forecast)
+
   return (
     <>
       <div id="forecast">
