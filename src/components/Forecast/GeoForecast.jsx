@@ -27,8 +27,9 @@ const GeoForecast = (data) => {
     <>
       <ul>
         {singleDayInfo.map((day) => {
+          console.log(day)
           return (
-            <li key={day.index}>
+            <li key={day.dt_txt}>
               <ForecastCard day={day} />
             </li>
           );

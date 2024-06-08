@@ -8,6 +8,7 @@ function App() {
   // eslint-disable-next-line no-unused-vars
   const [forecast, setForecast] = useState(false);
   const checkbox = document.getElementById("checkbox");
+  console.log(checkbox)
 
   function handleChange(e) {
 
